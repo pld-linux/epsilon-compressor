@@ -1,0 +1,43 @@
+--- epsilon-0.9.2/configure.in.orig	2011-05-27 12:47:34.000000000 +0200
++++ epsilon-0.9.2/configure.in	2012-02-03 19:00:24.215650540 +0100
+@@ -31,7 +31,8 @@
+ AC_CHECK_LIB([popt], [poptGetContext], [have_popt_lib=yes], ,)
+ 
+ if test x$have_popt_h = xyes -a x$have_popt_lib = xyes ; then
+-    LIBS="$LIBS -lpopt"
++    POPT_LIBS="-lpopt"
++    AC_SUBST([POPT_LIBS])
+ else
+     AC_MSG_ERROR([
+ =================================================
+@@ -56,7 +56,8 @@
+             AC_CHECK_LIB([pthread], [pthread_create], [have_pthread_lib=yes], ,)
+ 
+             if test x$have_pthread_h = xyes -a x$have_pthread_lib = xyes ; then
+-                LIBS="$LIBS -lpthread"
++                THREAD_LIBS="-lpthread"
++		AC_SUBST([THREAD_LIBS])
+                 AC_DEFINE([ENABLE_PTHREADS], [1],)
+             else
+                 AC_MSG_ERROR([
+@@ -122,7 +123,8 @@
+             AC_CHECK_LIB([pthread], [pthread_create], [have_pthread_lib=yes], ,)
+ 
+             if test x$have_pthread_h = xyes -a x$have_pthread_lib = xyes ; then
+-                LIBS="$LIBS -lpthread"
++                THREAD_LIBS="-lpthread"
++		AC_SUBST([THREAD_LIBS])
+                 AC_DEFINE([ENABLE_PTHREADS], [1],)
+             else
+                 AC_MSG_ERROR([
+--- epsilon-0.9.2/src/Makefile.am.orig	2010-04-05 07:01:04.000000000 +0200
++++ epsilon-0.9.2/src/Makefile.am	2012-02-03 19:07:50.418998813 +0100
+@@ -8,7 +8,7 @@
+ 
+ # the library search path.
+ epsilon_LDFLAGS = $(all_libraries) 
+-epsilon_LDADD = $(top_builddir)/lib/libepsilon.la
++epsilon_LDADD = $(top_builddir)/lib/libepsilon.la $(POPT_LIBS) $(THREAD_LIBS)
+ noinst_HEADERS = pbm.h options.h cmd_version.h cmd_list_all_fb.h \
+ 	cmd_encode_file.h psi.h misc.h cmd_decode_file.h cmd_truncate_file.h cmd_start_node.h \
+     worker_mpi_node.h epsilon_version.h
