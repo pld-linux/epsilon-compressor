@@ -6,12 +6,12 @@
 #
 # Conditional build:
 %bcond_without	apidocs		# do not build and package API docs
-#
+
 Summary:	EPSILON - powerful Open Source wavelet compressor
 Summary(pl.UTF-8):	EPSILON - potężny kompresor falkowy o otwartych źródłach
 Name:		epsilon-compressor
 Version:	0.9.2
-Release:	1
+Release:	2
 License:	LGPL v3+
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/epsilon-project/epsilon-%{version}.tar.gz
@@ -73,6 +73,9 @@ Statyczna biblioteka EPSILON.
 Summary:	EPSILON API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki EPSILON
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 API and internal documentation for EPSILON library.
