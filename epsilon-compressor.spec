@@ -11,7 +11,7 @@ Summary:	EPSILON - powerful Open Source wavelet compressor
 Summary(pl.UTF-8):	EPSILON - potężny kompresor falkowy o otwartych źródłach
 Name:		epsilon-compressor
 Version:	0.9.2
-Release:	2
+Release:	3
 License:	LGPL v3+
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/epsilon-project/epsilon-%{version}.tar.gz
