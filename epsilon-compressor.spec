@@ -73,9 +73,7 @@ Statyczna biblioteka EPSILON.
 Summary:	EPSILON API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki EPSILON
 Group:		Documentation
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 API and internal documentation for EPSILON library.
